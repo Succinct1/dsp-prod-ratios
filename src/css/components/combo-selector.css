@@ -3,7 +3,7 @@
 		display: inline-grid;
 		grid-template-areas:
 			"recipe ratio proliferator ."
-			"recipe specific . ."
+			"recipe specific stacking ."
 			"buildings buildings buildings buildings"
 			"recipes recipes recipes recipes"
 		;
@@ -17,6 +17,7 @@
 			grid-template-areas:
 			"recipe ratio ."
 			"recipe specific ."
+			". stacking ."
 			". proliferator ."
 			"buildings buildings buildings"
 			"recipes recipes recipes"
@@ -151,6 +152,10 @@
 			font-weight: 550;
 			font-stretch: 80%;
 		}
+	}
+	
+	.combo-selector .stacking {
+		grid-area: stacking;
 	}
 	
 	.combo-selector .proliferator {

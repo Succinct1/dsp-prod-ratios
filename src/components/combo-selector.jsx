@@ -94,6 +94,10 @@ function onTimeScale(event) {
 	state.timeScale.value = event.target.value;
 }
 
+function onStacking(event) {
+	state.stacking.value = +event.target.value;
+}
+
 function onPreferred(event) {
 	state.preferred[event.target.name].value = +event.target.value;
 	
@@ -242,6 +246,10 @@ export default function ComboSelector(props) {
 		return [unlocked, unlocked.length > 0];
 	}, [itemsUnlocked]);
 	
+	const hasStacking = useMemo(() => {
+		return state.research.value.length === 0 || state.research.value.some(tech => tech.id === 1607);
+	}, [state.research.value]);
+	
 	return (
 		<>
 			<div class="combo-selector">
@@ -285,6 +293,20 @@ export default function ComboSelector(props) {
 						)}
 					</select></span>
 				</label>
+				
+				{hasStacking && (
+					<label class="stacking">
+						<span>Belt Stacking:</span>
+						<select
+							onInput={onStacking}
+							disabled={!state.recipe.value}
+						>
+							{[1, 2, 3, 4].map(stack =>
+								<option value={stack} selected={stack === state.stacking.value}>&times;{stack}</option>
+							)}
+						</select>
+					</label>
+				)}
 				
 				{hasProliferators && (
 					<label class={classNames('proliferator', `is-${state.proliferator.value?.split('.')[0] /*.replace(/\./g, '-')*/}`)}>

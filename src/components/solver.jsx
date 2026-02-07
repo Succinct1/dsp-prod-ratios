@@ -128,7 +128,7 @@ function SolveTree({ solve, depth = 0, throughput, ingredient = null, hasProlife
 						</div>
 					)}
 					<div class="logistics">
-						<span class="belt"><span class="factor">{renderNumber(throughput / BeltTransportSpeed.get(state.preferred.belt.value))}</span>&times;</span>
+						<span class="belt"><span class="factor">{renderNumber(throughput / BeltTransportSpeed.get(state.preferred.belt.value) / state.stacking.value)}</span>&times;</span>
 					</div>
 					<ul class="products">
 						<li class={classNames('throughput', 'is-ingredient')}>
@@ -190,7 +190,7 @@ function SolveTree({ solve, depth = 0, throughput, ingredient = null, hasProlife
 						)}
 						<div class="logistics">
 							{recipe.results.map((result, index) =>
-								<span class="belt"><span class="factor">{renderNumber(throughput / BeltTransportSpeed.get(state.preferred.belt.value))}</span>&times;</span>
+								<span class="belt"><span class="factor">{renderNumber(throughput / BeltTransportSpeed.get(state.preferred.belt.value) / state.stacking.value)}</span>&times;</span>
 							)}
 						</div>
 						<ul class="products">

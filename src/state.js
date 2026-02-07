@@ -39,6 +39,7 @@ const state = {
 		persist: map => Array.from(map.entries()),
 	}),
 	
+	stacking: persistentSignal('stacking', 1),
 	
 	preferred: {
 		assembler: persistentSignal('preferred.assembler', 2303 /* Assembling Machine Mk.I */),
